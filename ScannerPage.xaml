@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlockVerify.ScannerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+    Title="ScannerPage"
+    Shell.NavBarIsVisible="False">
+    <Grid RowDefinitions="0.5*,0.1*,0.2*,0.2*">
+
+
+        <zxing:CameraBarcodeReaderView x:Name="qrCodeReader" BarcodesDetected="QrCodeReader_BarcodesDetected" />
+        <Image
+            HorizontalOptions="Center"
+            WidthRequest="240"
+            SemanticProperties.Description="dot net bot in a race car number eight"
+            Source="qrframe.png" />
+        <Image
+            Grid.Row="2"
+            HorizontalOptions="Center"
+            SemanticProperties.Description="dot net bot in a race car number eight"
+            Source="qrcode.png" />
+        <Label
+            Grid.Row="3"
+            HorizontalOptions="Center"
+            Style="{x:StaticResource SubHeadline}"
+            Text="Scan academic document"
+            VerticalOptions="Center" />
+    </Grid>
+</ContentPage>

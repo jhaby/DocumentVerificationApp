@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlockVerify.ResultsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:BlockVerify.ViewModels"
+    x:DataType="vm:ResultsViewModel"
+    Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="16"
+            Spacing="16"
+            VerticalOptions="Center">
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Label
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                Style="{x:StaticResource SubHeadline}"
+                Text="Verifying"
+                TextColor="{x:StaticResource Primary}"
+                VerticalOptions="Center" />
+            <Label
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsBusy}"
+                Text="Please wait..." />
+            <VerticalStackLayout HorizontalOptions="Center" IsVisible="{Binding IsFailed}">
+                <Image
+                    HorizontalOptions="Center"
+                    SemanticProperties.Description="dot net bot in a race car number eight"
+                    Source="error.png"
+                    WidthRequest="120" />
+                <Label
+                    Margin="0,16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{x:StaticResource SubHeadline}"
+                    Text="No record found" />
+                <Label
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="Document with this verification code not found, Please check code and try again" />
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                IsVisible="{Binding IsSuccess}"
+                Spacing="8"
+                VerticalOptions="Center">
+                <Image
+                    HorizontalOptions="Center"
+                    SemanticProperties.Description="dot net bot in a race car number eight"
+                    Source="verified.png"
+                    WidthRequest="120" />
+                <Label
+                    Margin="0,16"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{x:StaticResource SubHeadline}"
+                    Text="Verified Successfully" />
+                <Label FontSize="16" Text="{Binding DocResult.Owner, StringFormat='Owner: {0}'}" />
+                <Label FontSize="16" Text="{Binding DocResult.PublishedOn, StringFormat='Published On: {0}'}" />
+                <Label
+                    FontSize="16"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding DocResult.Hash, StringFormat='Hash: {0}'}" />
+                <Button
+                    Margin="0,16"
+                    Command="{Binding ViewOriginalCommand}"
+                    Text="View original" />
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

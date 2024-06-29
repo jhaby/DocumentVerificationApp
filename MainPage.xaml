@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="BlockVerify.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:BlockVerify.ViewModels"
+    Padding="16"
+    x:DataType="vm:MainViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="18">
+            <Image
+                Aspect="AspectFit"
+                HeightRequest="120"
+                HorizontalOptions="Center"
+                SemanticProperties.Description="dot net bot in a race car number eight"
+                Source="blockicon.png" />
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                Style="{x:StaticResource Headline}"
+                Text="Academic Verification" />
+            <Label
+                Margin="0,0,0,8"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Text="We are streamlining academic document verification using blockchain technology" />
+            <!--<Border
+                Padding="16" Stroke="Transparent"
+                BackgroundColor="{x:StaticResource White}"
+                StrokeShape="RoundRectangle 8">
+                <Border.Shadow>
+                    <Shadow Radius="8" Brush="{x:StaticResource Gray200Brush}" Offset="0,1" />
+                </Border.Shadow>
+                <Label Text="Quick actions" />
+            </Border>-->
+
+
+
+            <Grid ColumnDefinitions="0.3*,0.7*" RowDefinitions="auto">
+                <Image
+                    HorizontalOptions="Center"
+                    SemanticProperties.Description="dot net bot in a race car number eight"
+                    Source="qrcode.png" />
+                <Label
+                    Grid.Column="1"
+                    Text="To proceed, scan the QR code on the academic document"
+                    VerticalOptions="Center" />
+            </Grid>
+
+            <Button
+                Command="{Binding ScanCodeCommand}"
+                HorizontalOptions="Fill"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Text="Scan document" />
+            <Label
+                Margin="0,16,0,8"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="Or Enter code" />
+            <Grid ColumnDefinitions="0.6*,0.4*">
+                <Entry
+                    BackgroundColor="{AppThemeBinding Light={x:StaticResource Gray100},
+                                                      Dark={x:StaticResource Black}}"
+                    Keyboard="Numeric"
+                    Text="{Binding Code}" />
+                <Button
+                    Grid.Column="1"
+                    Margin="8,0,0,0"
+                    Command="{Binding VerifyCodeCommand}"
+                    Text="Verify" />
+            </Grid>
+
+            <Label
+                Margin="0,16,0,0"
+                HorizontalOptions="Center"
+                Text="Copyright 2024"
+                TextColor="{x:StaticResource Gray400}"
+                VerticalOptions="End" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
